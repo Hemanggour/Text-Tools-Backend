@@ -7,8 +7,6 @@ from rest_framework.views import APIView
 from account.models import ApikeyModel, UserModel
 from account.serializers import ApikeySerializer, UserSerializer
 
-# Create your views here.
-
 
 class LoginView(APIView):
     class PostSerializer(serializers.Serializer):
@@ -115,6 +113,8 @@ class ApikeyView(APIView):
 
 
 class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             logout(self.request)
