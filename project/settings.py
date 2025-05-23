@@ -20,6 +20,7 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+TEMP_MEDIA_DIR = os.path.join(BASE_DIR, "temp_media")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -141,3 +142,16 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Other settings
+
+# Model base config
+MODEL_TEMPRATURE = int(os.getenv("MODEL_TEMPRATURE", 1))
+
+# Gemini config
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_GEMINI_MODEL = os.getenv("GOOGLE_GEMINI_MODEL")
+
+# Text to speech config
+TEXT_TO_SPEECH_SRC_URL = os.getenv("TEXT_TO_SPEECH_SRC_URL")

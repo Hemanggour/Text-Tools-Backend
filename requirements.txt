@@ -2,3 +2,5 @@ django
 djangorestframework
 dotenv
 mysqlclient
+langchain_google_genai
+gradio_client
