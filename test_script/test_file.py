@@ -70,6 +70,7 @@ def logout():
     print("Error in logout!!", response.text)
     return None
 
+
 def paraphase_api(api_key, query):
     response = requests.post(
         headers={"X-API-KEY": api_key},
@@ -81,6 +82,7 @@ def paraphase_api(api_key, query):
         return response.json()
     print("Error in paraphase api!!", response.text)
     return None
+
 
 def grammar_check_api(api_key, query):
     response = requests.post(
@@ -106,6 +108,7 @@ def summarize_api(api_key, query):
         return response.json()
     print("Error in summarize api!!", response.text)
     return None
+
 
 def ai_reply_api(api_key, query):
     response = requests.post(
