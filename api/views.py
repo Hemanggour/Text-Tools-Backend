@@ -133,7 +133,7 @@ class TextToSpeechView(APIView):
                 FileWrapper(file),
                 content_type="audio/mpeg",
                 as_attachment=True,
-                filename=f"{query_text[:10]}.mp3",
+                filename=f"{query_text[:10]}_{random_suffix}.mp3",
             )
             file_response["Content-Disposition"] = (
                 f'attachment; filename="{query_text[:10]}_{random_suffix}.mp3"'

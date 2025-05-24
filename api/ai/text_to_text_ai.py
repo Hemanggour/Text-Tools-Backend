@@ -5,7 +5,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 class TextToText:
     def __init__(self):
         self.llm = ChatGoogleGenerativeAI(
-            model=settings.GOOGLE_GEMINI_MODEL, temprature=self.temprature
+            model=settings.GOOGLE_GEMINI_MODEL
         )
 
     def __generate(self, prompt):
