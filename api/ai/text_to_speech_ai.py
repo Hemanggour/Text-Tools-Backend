@@ -40,7 +40,7 @@ class TextToSpeech:
 
     def generate_audio(
         self, text: str, voice: str = "alloy", emotion: str = "neutral"
-    ) -> dict:
+    ) -> str | None:
         if voice not in self.available_voices():
             voice = "alloy"
 
@@ -52,7 +52,7 @@ class TextToSpeech:
             specific_seed=12345,
             api_name="/text_to_speech_app",
         )
-        if not result:
+        if not result or not isinstance(result, tuple):
             return None
         self.result_path = result[0]
         return self.result_path

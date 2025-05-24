@@ -1,3 +1,5 @@
+import random
+import string
 from wsgiref.util import FileWrapper
 
 from django.http import FileResponse
@@ -121,6 +123,10 @@ class TextToSpeechView(APIView):
         if audio_path is None:
             return Response({"message": "Can't generate audio"}, status=502)
 
+        random_suffix = "".join(
+            random.choices(string.ascii_letters + string.digits, k=5)
+        )
+
         try:
             file = open(audio_path, "rb")
             file_response = FileResponse(
@@ -128,6 +134,9 @@ class TextToSpeechView(APIView):
                 content_type="audio/mpeg",
                 as_attachment=True,
                 filename=f"{query_text[:10]}.mp3",
+            )
+            file_response["Content-Disposition"] = (
+                f'attachment; filename="{query_text[:10]}_{random_suffix}.mp3"'
             )
 
             def cleanup():
